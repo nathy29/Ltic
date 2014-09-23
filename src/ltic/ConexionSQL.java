@@ -16,7 +16,7 @@ public class ConexionSQL {
         String login = "ltic";
         String password = "abc123";
         String url = "jdbc:mysql://localhost/" + bd;
-        //Aqui habia una prueba
+        //Ya no Att Tefa
       
         try
         {
