@@ -17,6 +17,7 @@ public class ConexionSQL {
         String password = "abc123";
         String url = "jdbc:mysql://localhost/" + bd;
         //hoy es martes
+        //Yo soy JuanSe
       
         try
         {
