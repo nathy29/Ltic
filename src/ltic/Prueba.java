@@ -12,4 +12,6 @@ package ltic;
 public class Prueba {
   //esta es una clase de prueba 
     /* y me gusta dañar las coasas muahahahahahaha*/
+    //hoy es martes
+    //aaaaaaaaaaa
 }
