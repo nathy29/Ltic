@@ -87,6 +87,7 @@ public class LticF extends javax.swing.JFrame {
         buscarpuertotf = new javax.swing.JTextField();
         puertobuscarb = new javax.swing.JButton();
         puertotodosb = new javax.swing.JButton();
+        gruposeguridad = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         usuariotf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -181,7 +182,8 @@ public class LticF extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         rackf.setTitle("RACKS");
-        rackf.setMinimumSize(new java.awt.Dimension(500, 380));
+        rackf.setMinimumSize(new java.awt.Dimension(500, 360));
+        rackf.setPreferredSize(new java.awt.Dimension(506, 362));
 
         CoRackLab.setText("Código:");
 
@@ -195,8 +197,10 @@ public class LticF extends javax.swing.JFrame {
 
         GuardarRackBoton.setText("Guardar");
 
+        gruposeguridad.add(jRadioButton1);
         jRadioButton1.setText("SI");
 
+        gruposeguridad.add(jRadioButton2);
         jRadioButton2.setText("NO");
 
         javax.swing.GroupLayout SeguridadLayout = new javax.swing.GroupLayout(Seguridad);
@@ -245,16 +249,16 @@ public class LticF extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(MarcaRcakText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
-                        .addComponent(GuardarRackBoton)
-                        .addGap(43, 43, 43)
-                        .addComponent(EliminarRackBoton)
-                        .addGap(37, 37, 37)
-                        .addComponent(CancelarRackBoton))
-                    .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(gestionarRackPanelLayout.createSequentialGroup()
+                        .addComponent(GuardarRackBoton)
+                        .addGap(83, 83, 83)
+                        .addComponent(EliminarRackBoton)
+                        .addGap(61, 61, 61)
+                        .addComponent(CancelarRackBoton)))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         gestionarRackPanelLayout.setVerticalGroup(
             gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,12 +280,12 @@ public class LticF extends javax.swing.JFrame {
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(Seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GuardarRackBoton)
                     .addComponent(EliminarRackBoton)
                     .addComponent(CancelarRackBoton))
-                .addGap(25, 25, 25))
+                .addGap(36, 36, 36))
         );
 
         racktb.addTab("Gestionar", gestionarRackPanel);
@@ -677,6 +681,7 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JPanel gestionarPuertoPanel;
     private javax.swing.JPanel gestionarRackPanel;
     private javax.swing.JPanel gestionarSwitchPanel;
+    private javax.swing.ButtonGroup gruposeguridad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
