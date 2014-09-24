@@ -184,12 +184,19 @@ public class LticF extends javax.swing.JFrame {
         rackf.setTitle("RACKS");
         rackf.setMinimumSize(new java.awt.Dimension(500, 360));
         rackf.setPreferredSize(new java.awt.Dimension(506, 362));
+        rackf.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                rackfComponentShown(evt);
+            }
+        });
 
         CoRackLab.setText("Código:");
 
         CoRackText.setColumns(15);
 
         CoLaboratorioLab.setText("Laboratorio:");
+
+        CoLaboCombo.setMaximumRowCount(15);
 
         MarcaRackLab.setText("Marca:");
 
@@ -235,7 +242,7 @@ public class LticF extends javax.swing.JFrame {
             gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addComponent(CoRackLab)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,7 +250,7 @@ public class LticF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(CoLaboratorioLab)
                         .addGap(18, 18, 18)
-                        .addComponent(CoLaboCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CoLaboCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addComponent(MarcaRackLab)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -280,7 +287,7 @@ public class LticF extends javax.swing.JFrame {
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(Seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GuardarRackBoton)
                     .addComponent(EliminarRackBoton)
@@ -336,7 +343,7 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(codigoRackLabel)
                     .addComponent(rackbuscarb)
                     .addComponent(racktodosb))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         racktb.addTab("Consultar", consultaRackPanel);
@@ -598,6 +605,11 @@ public class LticF extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         rackf.setVisible(true);
         racktb.setSelectedIndex(0);
+        CoRackText.setText("");
+        MarcaRcakText.setText("");
+        GuardarRackBoton.setEnabled(false);
+        EliminarRackBoton.setEnabled(false);
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -623,6 +635,30 @@ public class LticF extends javax.swing.JFrame {
     private void switchbucarbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_switchbucarbActionPerformed
         
     }//GEN-LAST:event_switchbucarbActionPerformed
+
+    private void rackfComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_rackfComponentShown
+        // TODO add your handling code here:
+        CoRackText.setText("");
+        MarcaRcakText.setText("");
+        GuardarRackBoton.setEnabled(false);
+        EliminarRackBoton.setEnabled(false);
+         Connection miConexion;
+          miConexion=coneccion.GetConnection();
+         try
+         {
+           Statement st = miConexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT CODIGOLAB FROM labortorio"); 
+            while (rs.next())
+            {
+               CoLaboCombo.addItem(rs.getString("CODIGOLAB"));
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }         
+    }//GEN-LAST:event_rackfComponentShown
 
     /**
      * @param args the command line arguments
