@@ -7,6 +7,7 @@ import java.sql.*;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import ltic.ConexionSQL;
 
 
@@ -74,7 +75,7 @@ public class LticF extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         switcht = new javax.swing.JTable();
         codigoSwitchLabel = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        buscarswitchtf = new javax.swing.JTextField();
         switchbucarb = new javax.swing.JButton();
         switchtodosb = new javax.swing.JButton();
         puertof = new javax.swing.JFrame();
@@ -82,7 +83,7 @@ public class LticF extends javax.swing.JFrame {
         gestionarPuertoPanel = new javax.swing.JPanel();
         consultaPuertoPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        puertot = new javax.swing.JTable();
         codigoPuertoLabel = new javax.swing.JLabel();
         buscarpuertotf = new javax.swing.JTextField();
         puertobuscarb = new javax.swing.JButton();
@@ -297,6 +298,12 @@ public class LticF extends javax.swing.JFrame {
 
         racktb.addTab("Gestionar", gestionarRackPanel);
 
+        consultaRackPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                consultaRackPanelComponentShown(evt);
+            }
+        });
+
         rackt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -310,8 +317,18 @@ public class LticF extends javax.swing.JFrame {
         codigoRackLabel.setText("Ingrese Código:");
 
         rackbuscarb.setText("Buscar");
+        rackbuscarb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rackbuscarbActionPerformed(evt);
+            }
+        });
 
         racktodosb.setText("Ver Todos");
+        racktodosb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                racktodosbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout consultaRackPanelLayout = new javax.swing.GroupLayout(consultaRackPanel);
         consultaRackPanel.setLayout(consultaRackPanelLayout);
@@ -360,19 +377,19 @@ public class LticF extends javax.swing.JFrame {
         rackfLayout.setVerticalGroup(
             rackfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rackfLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(22, 22, 22)
                 .addComponent(racktb)
                 .addContainerGap())
         );
 
         switchf.setTitle("SWITCH");
-        switchf.setMinimumSize(new java.awt.Dimension(600, 500));
+        switchf.setMinimumSize(new java.awt.Dimension(1000, 374));
 
         javax.swing.GroupLayout gestionarSwitchPanelLayout = new javax.swing.GroupLayout(gestionarSwitchPanel);
         gestionarSwitchPanel.setLayout(gestionarSwitchPanelLayout);
         gestionarSwitchPanelLayout.setHorizontalGroup(
             gestionarSwitchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
+            .addGap(0, 974, Short.MAX_VALUE)
         );
         gestionarSwitchPanelLayout.setVerticalGroup(
             gestionarSwitchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,6 +397,12 @@ public class LticF extends javax.swing.JFrame {
         );
 
         switchtb.addTab("Gestionar", gestionarSwitchPanel);
+
+        consultaSwitchPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                consultaSwitchPanelComponentShown(evt);
+            }
+        });
 
         switcht.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -401,6 +424,11 @@ public class LticF extends javax.swing.JFrame {
         });
 
         switchtodosb.setText("Ver Todos");
+        switchtodosb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                switchtodosbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout consultaSwitchPanelLayout = new javax.swing.GroupLayout(consultaSwitchPanel);
         consultaSwitchPanel.setLayout(consultaSwitchPanelLayout);
@@ -408,13 +436,13 @@ public class LticF extends javax.swing.JFrame {
             consultaSwitchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultaSwitchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(consultaSwitchPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(codigoSwitchLabel)
                 .addGap(28, 28, 28)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscarswitchtf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(switchbucarb)
                 .addGap(120, 120, 120)
@@ -429,7 +457,7 @@ public class LticF extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(consultaSwitchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoSwitchLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarswitchtf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(switchbucarb)
                     .addComponent(switchtodosb))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -443,15 +471,15 @@ public class LticF extends javax.swing.JFrame {
             switchfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(switchfLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(switchtb, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(switchtb)
+                .addContainerGap())
         );
         switchfLayout.setVerticalGroup(
             switchfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, switchfLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(switchtb, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102))
+                .addGap(135, 135, 135))
         );
 
         puertof.setTitle("Puerto");
@@ -470,7 +498,13 @@ public class LticF extends javax.swing.JFrame {
 
         puertotb.addTab("Gestionar", gestionarPuertoPanel);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        consultaPuertoPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                consultaPuertoPanelComponentShown(evt);
+            }
+        });
+
+        puertot.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -478,13 +512,18 @@ public class LticF extends javax.swing.JFrame {
                 "Codigo Puerto", "Codigo Switch", "Numero Puerto", "Equipo"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(puertot);
 
         codigoPuertoLabel.setText("Ingrese Código: ");
 
         puertobuscarb.setText("Buscar");
 
         puertotodosb.setText("Ver Todos");
+        puertotodosb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puertotodosbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout consultaPuertoPanelLayout = new javax.swing.GroupLayout(consultaPuertoPanel);
         consultaPuertoPanel.setLayout(consultaPuertoPanelLayout);
@@ -660,6 +699,169 @@ public class LticF extends javax.swing.JFrame {
                 }         
     }//GEN-LAST:event_rackfComponentShown
 
+    private void rackbuscarbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rackbuscarbActionPerformed
+        Connection con ;
+        con=coneccion.GetConnection();
+        ResultSet rs;
+        String datos[]= new String [4];
+        String codigoRack = rackbuscartf.getText();
+        DefaultTableModel pt = (DefaultTableModel) rackt.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+         try
+         {
+           Statement st = con.createStatement();
+           rs = st.executeQuery("select * from rack where CODIGORACK = "+codigoRack+""); 
+            while (rs.next())
+            {
+               datos[0] = rs.getString("CODIGORACK");
+               datos[1]= rs.getString("CODIGOLAB");
+               datos[2]= rs.getString("MARCARACK");
+               datos[3]=""+ rs.getInt("SEGURIDADRACK");
+               if(datos[3].compareTo(""+1)==0)
+                   datos[3]="Si";
+               else
+                   datos[3]="No";
+               pt.addRow(datos);
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+          }   
+    }//GEN-LAST:event_rackbuscarbActionPerformed
+
+    private void racktodosbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_racktodosbActionPerformed
+         Connection con ;
+        con=coneccion.GetConnection();
+        ResultSet rs;
+        String datos[]= new String [4];
+        DefaultTableModel pt = (DefaultTableModel) rackt.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+        try
+         {
+           Statement st = con.createStatement();
+           rs = st.executeQuery("SELECT * FROM rack"); 
+            while (rs.next())
+            {
+               datos[0] = rs.getString("CODIGORACK");
+               datos[1]= rs.getString("CODIGOLAB");
+               datos[2]= rs.getString("MARCARACK");
+               datos[3]=""+ rs.getInt("SEGURIDADRACK");
+               if(datos[3].compareTo(""+1)==0)
+                   datos[3]="Si";
+               else
+                   datos[3]="No";
+               pt.addRow(datos);
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                } 
+        
+    }//GEN-LAST:event_racktodosbActionPerformed
+
+    private void switchtodosbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_switchtodosbActionPerformed
+        Connection con ;
+        con=coneccion.GetConnection();
+        ResultSet rs;
+        String datos[]= new String [8];
+        DefaultTableModel pt = (DefaultTableModel) switcht.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+        try
+         {
+           Statement st = con.createStatement();
+           rs = st.executeQuery("SELECT * FROM switch"); 
+            while (rs.next())
+            {
+               datos[0] = rs.getString(1);
+               datos[1]= rs.getString(2);
+               datos[2]= rs.getString(3);
+               datos[3]= ""+ rs.getDate(4);
+               datos[4] = ""+ rs.getInt(5);
+               datos[5]= ""+ rs.getFloat(6);
+               datos[6]= ""+ rs.getFloat(7);
+               datos[7]=""+ rs.getInt(8);
+               if(datos[6].compareTo(""+1)==0)
+                   datos[6]="Si";
+               else
+                   datos[6]="No";
+               if(datos[7].compareTo(""+1)==0)
+                   datos[7]="Si";
+               else
+                   datos[7]="No";
+               pt.addRow(datos);
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                } 
+    }//GEN-LAST:event_switchtodosbActionPerformed
+
+    private void puertotodosbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertotodosbActionPerformed
+        Connection con ;
+        con=coneccion.GetConnection();
+        ResultSet rs;
+        String datos[]= new String [4];
+        DefaultTableModel pt = (DefaultTableModel) puertot.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+        try
+         {
+           Statement st = con.createStatement();
+           rs = st.executeQuery("SELECT * FROM puerto"); 
+            while (rs.next())
+            {
+               datos[0] = rs.getString(1);
+               datos[1]= rs.getString(2);
+               datos[2]= ""+rs.getInt(3);
+               datos[3]= rs.getString(4);
+              
+               pt.addRow(datos);
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                } 
+    }//GEN-LAST:event_puertotodosbActionPerformed
+
+    private void consultaPuertoPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_consultaPuertoPanelComponentShown
+        buscarpuertotf.setText(null);
+        DefaultTableModel pt = (DefaultTableModel) puertot.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+    }//GEN-LAST:event_consultaPuertoPanelComponentShown
+
+    private void consultaSwitchPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_consultaSwitchPanelComponentShown
+        buscarswitchtf.setText(null);
+        DefaultTableModel pt = (DefaultTableModel) switcht.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+    }//GEN-LAST:event_consultaSwitchPanelComponentShown
+
+    private void consultaRackPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_consultaRackPanelComponentShown
+       rackbuscartf.setText(null);
+        DefaultTableModel pt = (DefaultTableModel) rackt.getModel();
+        while (0 < pt.getRowCount()) {
+            pt.removeRow(0);
+        }
+    }//GEN-LAST:event_consultaRackPanelComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -707,6 +909,7 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JTextField MarcaRcakText;
     private javax.swing.JPanel Seguridad;
     private javax.swing.JTextField buscarpuertotf;
+    private javax.swing.JTextField buscarswitchtf;
     private javax.swing.JLabel codigoPuertoLabel;
     private javax.swing.JLabel codigoRackLabel;
     private javax.swing.JLabel codigoSwitchLabel;
@@ -739,13 +942,12 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JFrame menuf;
     private javax.swing.JButton okb;
     private javax.swing.JButton puertobuscarb;
     private javax.swing.JFrame puertof;
+    private javax.swing.JTable puertot;
     private javax.swing.JTabbedPane puertotb;
     private javax.swing.JButton puertotodosb;
     private javax.swing.JButton rackbuscarb;
