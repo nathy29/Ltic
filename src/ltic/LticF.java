@@ -55,8 +55,8 @@ public class LticF extends javax.swing.JFrame {
         MarcaRcakText = new javax.swing.JTextField();
         GuardarRackBoton = new javax.swing.JButton();
         Seguridad = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        SiSeguridadRadio = new javax.swing.JRadioButton();
+        NOSeguridadRadio = new javax.swing.JRadioButton();
         EliminarRackBoton = new javax.swing.JButton();
         CancelarRackBoton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -209,11 +209,11 @@ public class LticF extends javax.swing.JFrame {
 
         GuardarRackBoton.setText("Guardar");
 
-        gruposeguridad.add(jRadioButton1);
-        jRadioButton1.setText("SI");
+        gruposeguridad.add(SiSeguridadRadio);
+        SiSeguridadRadio.setText("SI");
 
-        gruposeguridad.add(jRadioButton2);
-        jRadioButton2.setText("NO");
+        gruposeguridad.add(NOSeguridadRadio);
+        NOSeguridadRadio.setText("NO");
 
         javax.swing.GroupLayout SeguridadLayout = new javax.swing.GroupLayout(Seguridad);
         Seguridad.setLayout(SeguridadLayout);
@@ -221,9 +221,9 @@ public class LticF extends javax.swing.JFrame {
             SeguridadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SeguridadLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(SiSeguridadRadio)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2)
+                .addComponent(NOSeguridadRadio)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         SeguridadLayout.setVerticalGroup(
@@ -231,8 +231,8 @@ public class LticF extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SeguridadLayout.createSequentialGroup()
                 .addGap(0, 10, Short.MAX_VALUE)
                 .addGroup(SeguridadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)))
+                    .addComponent(SiSeguridadRadio)
+                    .addComponent(NOSeguridadRadio)))
         );
 
         EliminarRackBoton.setText("Eliminar");
@@ -681,6 +681,10 @@ public class LticF extends javax.swing.JFrame {
                CoRackText.setEnabled(false);
                MarcaRcakText.setText(rs.getString("MARCARACK"));
                CoLaboCombo.setSelectedItem(rs.getString("CODIGOLAB"));
+               if(rs.getInt("SEGURIDADRACK")==1)
+                    SiSeguridadRadio.setSelected(true);
+               else
+                   NOSeguridadRadio.setSelected(true);
             }
             rs.close();
           }
@@ -735,7 +739,9 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JButton GuardarRackBoton;
     private javax.swing.JLabel MarcaRackLab;
     private javax.swing.JTextField MarcaRcakText;
+    private javax.swing.JRadioButton NOSeguridadRadio;
     private javax.swing.JPanel Seguridad;
+    private javax.swing.JRadioButton SiSeguridadRadio;
     private javax.swing.JTextField buscarpuertotf;
     private javax.swing.JLabel codigoPuertoLabel;
     private javax.swing.JLabel codigoRackLabel;
@@ -764,8 +770,6 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
