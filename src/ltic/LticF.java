@@ -526,7 +526,7 @@ public class LticF extends javax.swing.JFrame {
 
         equipoTextField.setColumns(10);
 
-        guardarPuerto.setText("Gardar");
+        guardarPuerto.setText("Guardar");
         guardarPuerto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarPuertoActionPerformed(evt);
@@ -967,7 +967,28 @@ public class LticF extends javax.swing.JFrame {
     }//GEN-LAST:event_consultaRackPanelComponentShown
 
     private void guardarPuertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPuertoActionPerformed
-        // Aqui va lo de guardar un nuevo puerto
+        Connection con;
+        con=coneccion.GetConnection();
+        String codigoSwitch = (String)switchCombo.getSelectedItem();
+        String equipoPuerto = equipoTextField.getText();
+        int numeroPuerto = Integer.parseInt(puertoTextField.getText());
+        String query = "UPDATE PUERTO set EQUIPOPUERTO = '" + equipoPuerto + "' where CODIGOSWITCH = '"+ codigoSwitch +
+                "' AND NUMEROPUERTO =" + numeroPuerto;
+        
+         try
+         {
+            Statement st = con.createStatement();
+            int rs = st.executeUpdate(query);
+            if(rs == 1)
+            {
+               //Todo salio bien
+            }
+            con.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
     }//GEN-LAST:event_guardarPuertoActionPerformed
 
     private void eliminarPuertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuertoActionPerformed
