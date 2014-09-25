@@ -559,20 +559,19 @@ public class LticF extends javax.swing.JFrame {
                             .addComponent(equipoLabel)
                             .addComponent(switchLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
-                                .addComponent(switchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(puertoLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(switchCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(equipoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(puertoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(guardarPuerto)
                         .addGap(43, 43, 43)
                         .addComponent(eliminarPuerto)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         gestionarPuertoPanelLayout.setVerticalGroup(
             gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,15 +972,16 @@ public class LticF extends javax.swing.JFrame {
         String equipoPuerto = equipoTextField.getText();
         int numeroPuerto = Integer.parseInt(puertoTextField.getText());
         String query = "UPDATE PUERTO set EQUIPOPUERTO = '" + equipoPuerto + "' where CODIGOSWITCH = '"+ codigoSwitch +
-                "' AND NUMEROPUERTO =" + numeroPuerto;
-        
+                "' AND NUMEROPUERTO =" + numeroPuerto; 
          try
          {
             Statement st = con.createStatement();
             int rs = st.executeUpdate(query);
             if(rs == 1)
             {
-               //Todo salio bien
+               switchCombo.setSelectedIndex(-1);
+               equipoTextField.setText("");
+               puertoTextField.setText("");
             }
             con.close();
           }
@@ -992,7 +992,28 @@ public class LticF extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarPuertoActionPerformed
 
     private void eliminarPuertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPuertoActionPerformed
-        //Aqui va lo de elimar el grupo:
+        Connection con;
+        con=coneccion.GetConnection();
+        String codigoSwitch = (String)switchCombo.getSelectedItem();
+        int numeroPuerto = Integer.parseInt(puertoTextField.getText());
+        String query = "UPDATE PUERTO set EQUIPOPUERTO = 'Sin Conexion' where CODIGOSWITCH = '"+ codigoSwitch +
+                "' AND NUMEROPUERTO =" + numeroPuerto; 
+         try
+         {
+            Statement st = con.createStatement();
+            int rs = st.executeUpdate(query);
+            if(rs == 1)
+            {
+               switchCombo.setSelectedIndex(-1);
+               equipoTextField.setText("");
+               puertoTextField.setText("");
+            }
+            con.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
     }//GEN-LAST:event_eliminarPuertoActionPerformed
 
     private void CoRackTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CoRackTextFocusLost
