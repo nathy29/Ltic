@@ -541,29 +541,36 @@ public class LticF extends javax.swing.JFrame {
         });
 
         puertoTextField.setColumns(10);
+        puertoTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                puertoTextFieldFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout gestionarPuertoPanelLayout = new javax.swing.GroupLayout(gestionarPuertoPanel);
         gestionarPuertoPanel.setLayout(gestionarPuertoPanelLayout);
         gestionarPuertoPanelLayout.setHorizontalGroup(
             gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(equipoLabel)
-                    .addComponent(switchLabel))
-                .addGap(18, 18, 18)
                 .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
-                        .addComponent(switchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(puertoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(guardarPuerto)
-                            .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
+                            .addComponent(equipoLabel)
+                            .addComponent(switchLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
+                                .addComponent(switchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(puertoLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(guardarPuerto)
+                        .addGap(43, 43, 43)
                         .addComponent(eliminarPuerto)))
                 .addContainerGap(243, Short.MAX_VALUE))
         );
@@ -580,11 +587,11 @@ public class LticF extends javax.swing.JFrame {
                 .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(equipoLabel)
                     .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
+                .addGap(50, 50, 50)
                 .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarPuerto)
                     .addComponent(eliminarPuerto))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         puertotb.addTab("Gestionar", gestionarPuertoPanel);
@@ -1015,7 +1022,7 @@ public class LticF extends javax.swing.JFrame {
 
     private void puertofComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_puertofComponentShown
         Connection con;
-          con=coneccion.GetConnection();
+        con=coneccion.GetConnection();
          try
          {
            Statement st = con.createStatement();
@@ -1032,6 +1039,31 @@ public class LticF extends javax.swing.JFrame {
                 e.printStackTrace();
                 }
     }//GEN-LAST:event_puertofComponentShown
+
+    private void puertoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_puertoTextFieldFocusLost
+        Connection con;
+        con=coneccion.GetConnection();
+        String codigoSwitch = (String)switchCombo.getSelectedItem();
+        int numeroPuerto = Integer.parseInt(puertoTextField.getText());
+        
+        String query = "Select EQUIPOPUERTO from puerto where CODIGOSWITCH = '"+ codigoSwitch +
+                "' AND NUMEROPUERTO =" + numeroPuerto ;
+         try
+         {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query); 
+            while (rs.next())
+            {
+               equipoTextField.setText(rs.getString("EQUIPOPUERTO"));
+            }
+            rs.close();
+            con.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
+    }//GEN-LAST:event_puertoTextFieldFocusLost
 
     /**
      * @param args the command line arguments
