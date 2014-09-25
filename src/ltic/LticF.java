@@ -193,6 +193,11 @@ public class LticF extends javax.swing.JFrame {
         CoRackLab.setText("Código:");
 
         CoRackText.setColumns(15);
+        CoRackText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CoRackTextFocusLost(evt);
+            }
+        });
 
         CoLaboratorioLab.setText("Laboratorio:");
 
@@ -659,6 +664,31 @@ public class LticF extends javax.swing.JFrame {
                 e.printStackTrace();
                 }         
     }//GEN-LAST:event_rackfComponentShown
+
+    private void CoRackTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CoRackTextFocusLost
+        // TODO add your handling code here:
+        GuardarRackBoton.setEnabled(true);
+        
+        Connection miConexion;
+          miConexion=coneccion.GetConnection();
+         try
+         {
+           Statement st = miConexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Rack where CodigoRack='"+CoRackText.getText()+"'"); 
+            if (rs.next())
+            {
+               EliminarRackBoton.setEnabled(true);
+               CoRackText.setEnabled(false);
+               MarcaRcakText.setText(rs.getString("MARCARACK"));
+               CoLaboCombo.setSelectedItem(rs.getString("CODIGOLAB"));
+            }
+            rs.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                } 
+    }//GEN-LAST:event_CoRackTextFocusLost
 
     /**
      * @param args the command line arguments
