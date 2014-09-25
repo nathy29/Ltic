@@ -628,32 +628,31 @@ public class LticF extends javax.swing.JFrame {
             consultaPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultaPuertoPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(consultaPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(consultaPuertoPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))
-                    .addGroup(consultaPuertoPanelLayout.createSequentialGroup()
-                        .addComponent(codigoPuertoLabel)
-                        .addGap(34, 34, 34)
-                        .addComponent(buscarpuertotf, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(puertobuscarb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(puertotodosb)
-                        .addGap(54, 54, 54))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(consultaPuertoPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(codigoPuertoLabel)
+                .addGap(34, 34, 34)
+                .addComponent(buscarpuertotf, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(puertobuscarb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(puertotodosb)
+                .addContainerGap())
         );
         consultaPuertoPanelLayout.setVerticalGroup(
             consultaPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaPuertoPanelLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(consultaPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoPuertoLabel)
                     .addComponent(buscarpuertotf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puertobuscarb)
                     .addComponent(puertotodosb))
-                .addGap(176, 176, 176))
+                .addGap(38, 38, 38))
         );
 
         puertotb.addTab("Consulta", consultaPuertoPanel);
@@ -811,7 +810,7 @@ public class LticF extends javax.swing.JFrame {
          try
          {
            Statement st = con.createStatement();
-           rs = st.executeQuery("select * from rack where CODIGORACK = "+codigoRack+""); 
+           rs = st.executeQuery("select * from rack where CODIGORACK = '"+codigoRack+"'"); 
             while (rs.next())
             {
                datos[0] = rs.getString("CODIGORACK");
