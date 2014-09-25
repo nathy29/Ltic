@@ -784,6 +784,7 @@ public class LticF extends javax.swing.JFrame {
                CoLaboCombo.addItem(rs.getString("CODIGOLAB"));
             }
             rs.close();
+             miConexion.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -818,6 +819,7 @@ public class LticF extends javax.swing.JFrame {
                pt.addRow(datos);
             }
             rs.close();
+             con.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -851,6 +853,7 @@ public class LticF extends javax.swing.JFrame {
                pt.addRow(datos);
             }
             rs.close();
+            con.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -893,6 +896,7 @@ public class LticF extends javax.swing.JFrame {
                pt.addRow(datos);
             }
             rs.close();
+            con.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -923,6 +927,7 @@ public class LticF extends javax.swing.JFrame {
                pt.addRow(datos);
             }
             rs.close();
+            con.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -984,6 +989,7 @@ public class LticF extends javax.swing.JFrame {
                    NOSeguridadRadio.setSelected(true);
             }
             rs.close();
+            miConexion.close();
           }
                 catch( Exception e ){
                 System.out.println(e.getMessage());
@@ -996,6 +1002,7 @@ public class LticF extends javax.swing.JFrame {
 
     private void GuardarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarRackBotonActionPerformed
         //AQUI VA GUARDAR RACK
+        
     }//GEN-LAST:event_GuardarRackBotonActionPerformed
 
     private void EliminarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarRackBotonActionPerformed
