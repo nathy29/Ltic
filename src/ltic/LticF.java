@@ -653,6 +653,7 @@ public class LticF extends javax.swing.JFrame {
          {
            Statement st = miConexion.createStatement();
             ResultSet rs = st.executeQuery("SELECT CODIGOLAB FROM labortorio"); 
+            CoLaboCombo.addItem(" ");
             while (rs.next())
             {
                CoLaboCombo.addItem(rs.getString("CODIGOLAB"));
