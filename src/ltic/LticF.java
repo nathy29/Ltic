@@ -84,11 +84,11 @@ public class LticF extends javax.swing.JFrame {
         switchCombo = new javax.swing.JComboBox();
         switchLabel = new javax.swing.JLabel();
         puertoLabel = new javax.swing.JLabel();
-        puertoCombo = new javax.swing.JComboBox();
         equipoLabel = new javax.swing.JLabel();
         equipoTextField = new javax.swing.JTextField();
         guardarPuerto = new javax.swing.JButton();
         eliminarPuerto = new javax.swing.JButton();
+        puertoTextField = new javax.swing.JTextField();
         consultaPuertoPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         puertot = new javax.swing.JTable();
@@ -512,14 +512,15 @@ public class LticF extends javax.swing.JFrame {
 
         puertof.setTitle("Puerto");
         puertof.setMinimumSize(new java.awt.Dimension(600, 500));
-
-        switchCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        puertof.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                puertofComponentShown(evt);
+            }
+        });
 
         switchLabel.setText("Switch:");
 
         puertoLabel.setText("Puerto:");
-
-        puertoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         equipoLabel.setText("Equipo");
 
@@ -539,6 +540,8 @@ public class LticF extends javax.swing.JFrame {
             }
         });
 
+        puertoTextField.setColumns(10);
+
         javax.swing.GroupLayout gestionarPuertoPanelLayout = new javax.swing.GroupLayout(gestionarPuertoPanel);
         gestionarPuertoPanel.setLayout(gestionarPuertoPanelLayout);
         gestionarPuertoPanelLayout.setHorizontalGroup(
@@ -549,20 +552,20 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(equipoLabel)
                     .addComponent(switchLabel))
                 .addGap(18, 18, 18)
-                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
                         .addComponent(switchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(puertoLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(puertoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
                         .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(guardarPuerto)
                             .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(54, 54, 54)
                         .addComponent(eliminarPuerto)))
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         gestionarPuertoPanelLayout.setVerticalGroup(
             gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,7 +575,7 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(switchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(switchLabel)
                     .addComponent(puertoLabel)
-                    .addComponent(puertoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(equipoLabel)
@@ -1003,6 +1006,26 @@ public class LticF extends javax.swing.JFrame {
         // AQUI VA CANCELAR RACK
     }//GEN-LAST:event_CancelarRackBotonActionPerformed
 
+    private void puertofComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_puertofComponentShown
+        Connection con;
+          con=coneccion.GetConnection();
+         try
+         {
+           Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select Codigoswitch from switch"); 
+            while (rs.next())
+            {
+               switchCombo.addItem(rs.getString("Codigoswitch"));
+            }
+            rs.close();
+            con.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
+    }//GEN-LAST:event_puertofComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -1090,8 +1113,8 @@ public class LticF extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JFrame menuf;
     private javax.swing.JButton okb;
-    private javax.swing.JComboBox puertoCombo;
     private javax.swing.JLabel puertoLabel;
+    private javax.swing.JTextField puertoTextField;
     private javax.swing.JButton puertobuscarb;
     private javax.swing.JFrame puertof;
     private javax.swing.JTable puertot;
