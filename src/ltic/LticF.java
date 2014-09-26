@@ -1086,11 +1086,29 @@ public class LticF extends javax.swing.JFrame {
         CoRackText.setText("");
         MarcaRcakText.setText("");
         CoLaboCombo.setSelectedIndex(0);
-        
+        GuardarRackBoton.setEnabled(false);
+        EliminarRackBoton.setEnabled(false);
     }//GEN-LAST:event_GuardarRackBotonActionPerformed
 
     private void EliminarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarRackBotonActionPerformed
-      // AQUI VA ELIMINAR RACK
+      Connection miConexion;
+          miConexion=coneccion.GetConnection();
+         try
+         {
+           Statement st = miConexion.createStatement();
+            st.executeUpdate("DELETE from rack where CODIGORACK='"+CoRackText.getText()+"'");
+            
+            miConexion.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
+        CoRackText.setText("");
+        MarcaRcakText.setText("");
+        CoLaboCombo.setSelectedIndex(0);
+        GuardarRackBoton.setEnabled(false);
+        EliminarRackBoton.setEnabled(false);
     }//GEN-LAST:event_EliminarRackBotonActionPerformed
 
     private void CancelarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarRackBotonActionPerformed
