@@ -1088,6 +1088,7 @@ public class LticF extends javax.swing.JFrame {
         CoLaboCombo.setSelectedIndex(0);
         GuardarRackBoton.setEnabled(false);
         EliminarRackBoton.setEnabled(false);
+        CoRackText.setEnabled(true);
     }//GEN-LAST:event_GuardarRackBotonActionPerformed
 
     private void EliminarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarRackBotonActionPerformed
@@ -1109,6 +1110,7 @@ public class LticF extends javax.swing.JFrame {
         CoLaboCombo.setSelectedIndex(0);
         GuardarRackBoton.setEnabled(false);
         EliminarRackBoton.setEnabled(false);
+        CoRackText.setEnabled(true);
     }//GEN-LAST:event_EliminarRackBotonActionPerformed
 
     private void CancelarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarRackBotonActionPerformed
@@ -1117,6 +1119,7 @@ public class LticF extends javax.swing.JFrame {
         CoLaboCombo.setSelectedIndex(0);
          GuardarRackBoton.setEnabled(false);
         EliminarRackBoton.setEnabled(false);
+        CoRackText.setEnabled(true);
         
     }//GEN-LAST:event_CancelarRackBotonActionPerformed
 
