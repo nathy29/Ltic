@@ -188,9 +188,9 @@ public class LticF extends javax.swing.JFrame {
         menufLayout.setHorizontalGroup(
             menufLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menufLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         menufLayout.setVerticalGroup(
             menufLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,7 +726,7 @@ public class LticF extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        okb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/check.png"))); // NOI18N
+        okb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/check.gif"))); // NOI18N
         okb.setText("OK");
         okb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -761,7 +761,7 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(contrasenatf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(okb))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
