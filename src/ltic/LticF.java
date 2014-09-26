@@ -188,16 +188,16 @@ public class LticF extends javax.swing.JFrame {
         menufLayout.setHorizontalGroup(
             menufLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menufLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel5)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         menufLayout.setVerticalGroup(
             menufLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menufLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jMenuItem1.setText("jMenuItem1");
