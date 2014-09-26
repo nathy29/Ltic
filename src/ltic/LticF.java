@@ -1036,6 +1036,7 @@ public class LticF extends javax.swing.JFrame {
                else
                    NOSeguridadRadio.setSelected(true);
             }
+            
             rs.close();
             miConexion.close();
           }
@@ -1049,7 +1050,42 @@ public class LticF extends javax.swing.JFrame {
     }//GEN-LAST:event_CoRackTextFocusLost
 
     private void GuardarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarRackBotonActionPerformed
-        //AQUI VA GUARDAR RACK
+        Connection miConexion;
+        String Codigo=CoRackText.getText();
+        String Marca=MarcaRcakText.getText();
+        String laboratorio=(String)CoLaboCombo.getSelectedItem();
+        Object seguridad;
+        if(SiSeguridadRadio.isSelected())
+            seguridad=1;
+        else
+            seguridad=0;
+          miConexion=coneccion.GetConnection();
+         try
+         {
+           Statement st = miConexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Rack where CodigoRack='"+CoRackText.getText()+"'"); 
+            if (rs.next())
+            {
+               st.executeUpdate( "UPDATE rack set CODIGOLAB ='"+laboratorio+"', MARCARACK='"+Marca+"', "
+                       + "SEGURIDADRACK= "+seguridad+" where CODIGORACK ='"+Codigo+"'");
+            }
+            else
+            {
+                st.executeUpdate("INSERT INTO rack (CODIGORACK, CODIGOLAB, MARCARACK, SEGURIDADRACK)"
+                + "values('"+Codigo+"', '"+laboratorio+"', '"+Marca+"', "+seguridad+")");
+            }
+            
+            rs.close();
+            miConexion.close();
+          }
+                catch( Exception e ){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                }
+         
+        CoRackText.setText("");
+        MarcaRcakText.setText("");
+        CoLaboCombo.setSelectedIndex(0);
         
     }//GEN-LAST:event_GuardarRackBotonActionPerformed
 
@@ -1058,7 +1094,12 @@ public class LticF extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarRackBotonActionPerformed
 
     private void CancelarRackBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarRackBotonActionPerformed
-        // AQUI VA CANCELAR RACK
+       CoRackText.setText("");
+        MarcaRcakText.setText("");
+        CoLaboCombo.setSelectedIndex(0);
+         GuardarRackBoton.setEnabled(false);
+        EliminarRackBoton.setEnabled(false);
+        
     }//GEN-LAST:event_CancelarRackBotonActionPerformed
 
     private void puertofComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_puertofComponentShown
