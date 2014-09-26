@@ -203,7 +203,7 @@ public class LticF extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         rackf.setTitle("RACKS");
-        rackf.setMinimumSize(new java.awt.Dimension(500, 360));
+        rackf.setMinimumSize(new java.awt.Dimension(600, 360));
         rackf.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 rackfComponentShown(evt);
@@ -227,6 +227,7 @@ public class LticF extends javax.swing.JFrame {
 
         MarcaRcakText.setColumns(15);
 
+        GuardarRackBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         GuardarRackBoton.setText("Guardar");
         GuardarRackBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +261,7 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(NOSeguridadRadio)))
         );
 
+        EliminarRackBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         EliminarRackBoton.setText("Eliminar");
         EliminarRackBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +269,7 @@ public class LticF extends javax.swing.JFrame {
             }
         });
 
+        CancelarRackBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aspa.gif"))); // NOI18N
         CancelarRackBoton.setText("Cancelar");
         CancelarRackBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,7 +308,7 @@ public class LticF extends javax.swing.JFrame {
                         .addComponent(EliminarRackBoton)
                         .addGap(61, 61, 61)
                         .addComponent(CancelarRackBoton)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         gestionarRackPanelLayout.setVerticalGroup(
             gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +330,7 @@ public class LticF extends javax.swing.JFrame {
                     .addGroup(gestionarRackPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(Seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(gestionarRackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GuardarRackBoton)
                     .addComponent(EliminarRackBoton)
@@ -541,6 +544,7 @@ public class LticF extends javax.swing.JFrame {
 
         equipoTextField.setColumns(10);
 
+        guardarPuerto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         guardarPuerto.setText("Guardar");
         guardarPuerto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -548,6 +552,7 @@ public class LticF extends javax.swing.JFrame {
             }
         });
 
+        eliminarPuerto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         eliminarPuerto.setText("Eliminar");
         eliminarPuerto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -567,7 +572,7 @@ public class LticF extends javax.swing.JFrame {
         gestionarPuertoPanelLayout.setHorizontalGroup(
             gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
-                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -584,7 +589,7 @@ public class LticF extends javax.swing.JFrame {
                     .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(guardarPuerto)
-                        .addGap(43, 43, 43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eliminarPuerto)))
                 .addContainerGap(407, Short.MAX_VALUE))
         );
@@ -598,14 +603,15 @@ public class LticF extends javax.swing.JFrame {
                     .addComponent(puertoLabel)
                     .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(equipoLabel)
-                    .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarPuerto)
+                .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(gestionarPuertoPanelLayout.createSequentialGroup()
+                        .addGroup(gestionarPuertoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(equipoLabel)
+                            .addComponent(equipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(guardarPuerto))
                     .addComponent(eliminarPuerto))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         puertotb.addTab("Gestionar", gestionarPuertoPanel);
